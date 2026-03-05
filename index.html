@@ -1,12 +1,87 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>check weather</title>
-        <link href = "style.css" rel = "stylesheet">
-    </head>
-    <body>
-        weather now
-    </body>
-</html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Weather App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
 
-<!--https://www.weatherapi.com/docs/-->
+<body>
+
+  <div class="container">
+
+    
+
+    <!-- Main Content -->
+    <main class="main">
+
+      <!-- Hero Section -->
+      <section class="hero">
+        <input type="text" placeholder="Search city" class="search-box">
+
+        <div class="hero-top">
+          <h2 class="temp">29°C</h2>
+          <h1 class="location">Kollam, Kerala, India</h1>
+        </div>
+
+        <div class="time">
+          7:33 <span>am</span>
+          <small>IST</small>
+        </div>
+      </section>
+
+      <div class = "container">
+    <aside class="sidebar">
+      <div class="logo-box"></div>
+
+      <h3 class="sidebar-title">Check out</h3>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1522383225653-ed111181a951" alt="Cherry blossom">
+        <p>Blossoms in Bloom: Japan’s Most Beautiful Season Begins</p>
+      </div>
+    </aside>
+      <section class="weather-info">
+        <h2>Weather Today</h2>
+
+        <div class="weather-details">
+          <h3>Kollam, Kerala, India</h3>
+
+          <div class="weather-status">
+            <img src="https://cdn-icons-png.flaticon.com/512/869/869869.png" alt="Sun icon">
+            <p>It's a sunny day </p>
+          </div>
+
+          <p class="feels">Feels like</p>
+          <h1 class="big-temp">29°C</h1>
+
+          <div class="info-row">
+            <span>Humidity</span>
+            <span>88%</span>
+          </div>
+
+          <div class="info-row">
+            <span>UV Index</span>
+            <span>1 of 11</span>
+          </div>
+          <div class="info-row">
+            <span>Pressure</span>
+            <span>29.89 in</span>
+          </div>
+        </div>
+        </div>
+
+      </section>
+      <footer class="footer">
+          weather-app/adithyanap
+      </footer>
+
+    </main>
+
+  </div>
+
+
+</body>
+</html>
