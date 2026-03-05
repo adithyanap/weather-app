@@ -267,9 +267,9 @@ body {
   }
 
   .sidebar {
-    width: 120px;
-    min-width: 120px;
-    max-width: 120px;
+    width: 100px;
+    min-width: 100px;
+    max-width: 100px;
     flex-shrink: 0;
     padding: 15px 10px;
     border-right: 1px solid #e0e0e0;
@@ -279,11 +279,7 @@ body {
     overflow: hidden;
   }
 
-  .logo-box {
-    width: 45px;
-    height: 25px;
-    margin-bottom: 15px;
-  }
+ 
 
   .sidebar-title {
     font-size: 12px;
