@@ -20,9 +20,14 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
+.date{
+    font-size : 30px;
+    font-weight : 700;
+}
 
 
 /* Sidebar */
+
 
 .sidebar {
   width: 260px;
@@ -254,6 +259,7 @@ body {
   .time span {
     font-size: 18px;
   }
+
 
 
   /* Content Area */
