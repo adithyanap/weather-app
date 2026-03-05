@@ -22,15 +22,14 @@ body {
 }
 
 
-
+/* Sidebar */
 
 .sidebar {
   width: 260px;
   background: #fff;
   padding: 25px;
   border-right: 1px solid #e0e0e0;
-  flex-shrink: 10;
-  align-self :stretch ;
+  flex-shrink: 0;
 }
 
 .logo-box {
@@ -219,49 +218,150 @@ body {
 
 @media (max-width: 768px) {
 
-  .content-area {
-    flex-direction: row;
-    align-items: flex-start;
-  }
+  /* Hero */
 
-  .sidebar {
-    width: 160px;
-    min-width: 160px;
-    border-right: 1px solid #e0e0e0;
-    border-bottom: none;
-    padding: 15px;
-  }
-
-
-  .card img {
-    width: 100%;
-  }
-
-  .hero-top {
-    flex-direction: column;
-    gap: 10px;
+  .hero {
+    padding: 20px 15px;
   }
 
   .search-box {
     width: 100%;
-    max-width: 260px;
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .hero-top {
+    flex-direction: row;
+    gap: 15px;
+    padding: 10px 15px;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .temp {
+    font-size: 28px;
+  }
+
+  .location {
+    font-size: 16px;
   }
 
   .time {
-    font-size: 36px;
+    margin-top: 20px;
+    font-size: 32px;
   }
 
-  .big-temp {
-    font-size: 36px;
+  .time span {
+    font-size: 18px;
+  }
+
+
+  /* Content Area */
+
+  .content-area {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .sidebar {
+    width: 120px;
+    min-width: 120px;
+    max-width: 120px;
+    flex-shrink: 0;
+    padding: 15px 10px;
+    border-right: 1px solid #e0e0e0;
+    border-bottom: none;
+    background: #fff;
+    align-self: stretch;
+    overflow: hidden;
+  }
+
+  .logo-box {
+    width: 45px;
+    height: 25px;
+    margin-bottom: 15px;
+  }
+
+  .sidebar-title {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .card p {
+    font-size: 11px;
+    line-height: 1.4;
+  }
+
+
+  /* Weather Info */
+
+  .weather-info {
+    flex: 1;
+    padding: 15px 12px;
+    overflow: hidden;
+    min-width: 0;
+  }
+
+  .weather-info h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .weather-details {
+    max-width: 100%;
+  }
+
+  .weather-details h3 {
+    font-size: 13px;
+  }
+
+  .weather-status {
+    gap: 8px;
+    margin: 10px 0;
   }
 
   .weather-status img {
-    width: 45px;
-    height: 45px;
+    width: 35px;
+    height: 35px;
+  }
+
+  .weather-status p {
+    font-size: 13px;
+  }
+
+  .feels {
+    font-size: 12px;
+  }
+
+  .big-temp {
+    font-size: 32px;
+    margin: 5px 0 15px 0;
   }
 
   .weather-metrics {
-    gap: 40px;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 10px;
+  }
+
+  .info-row {
+    padding: 8px 0;
+  }
+
+  .info-row span {
+    font-size: 12px;
+  }
+
+  .info-row span:last-child {
+    width: auto;
   }
 
 }
