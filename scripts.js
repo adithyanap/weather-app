@@ -20,7 +20,10 @@ class Time {
             this.tHours = this.hour-12;
             return(`${this.tHours}:${this.min}`);
         }else{
-            return(`${this.hour}:${this.min}`);
+            if (this.hour === 0 ){
+                this.tHours = 12;
+            }
+            return(`${this.tHours}:${this.min}`);
         }
     }
     mer(){
@@ -41,3 +44,5 @@ document.querySelector(".date").innerHTML = date();
 
 document.querySelector(".time").childNodes[0].nodeValue = times.time();
 document.querySelector(".mer").innerHTML = times.mer();
+
+
