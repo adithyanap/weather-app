@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body onload = "getLocation()">
 
   <div class="container">
 
@@ -24,7 +24,7 @@
 
         <div class="hero-top">
           <h2 class="temp">29°C</h2>
-          <h1 class="location">Kollam, Kerala, India</h1>
+          <h1 class="location">kerala, India</h1>
         </div>
 
         <div class="time">
@@ -60,7 +60,7 @@
 
           <div class="weather-details">
 
-            <h3>Kollam, Kerala, India</h3>
+            <h3 class = "loc">Kerala, India</h3>
 
             <div class="weather-status">
               <img src="https://cdn-icons-png.flaticon.com/512/869/869869.png" alt="Sun icon">
@@ -127,5 +127,6 @@
 
 </body>
 <script src = "scripts.js"></script>
+<script src = "location.js"></script>
 
 </html>
