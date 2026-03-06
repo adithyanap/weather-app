@@ -1,4 +1,4 @@
-```html
+
 <!DOCTYPE html>
 <html>
 <body>
@@ -9,28 +9,9 @@
 
 <p id="demo"></p>
 
-<script>
-function getLocation(){
-    if(navigator.geolocation){
-        navigator.geolocation.getCurrentPosition(success,error);
-    }else{
-        console.log("not supported");
-    }
-}
-    function success(position){
-        let latitude = position.coords.latitude;
-        let longitude = position.coords.longitude;
+<script src = location.js>
 
-
-        console.log(latitude);
-        console.log(longitude);
-
-    }
-        function error(){
-        console.log("shit");
-    }
 </script>
 
 </body>
 </html>
-```
