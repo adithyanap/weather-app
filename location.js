@@ -1,3 +1,4 @@
+
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(success, error);
@@ -12,7 +13,7 @@ function getLocation() {
 async function success(position) {
     const latitude = await position.coords.latitude;
     const longitude = await position.coords.longitude;
-    getAdress(latitude,longitude);
+     getAdress(latitude,longitude);
 
 }
 
@@ -29,8 +30,11 @@ async function getAdress(lat,lon) {
     let url = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`;
     let responce = await fetch(url);
     let data = await responce.json();
-    console.log(data);
+    [".location",".loc"].forEach(sec =>{
+    document.querySelector(sec).innerHTML = `${data.address.town}, ${data.address.state_district}, ${data.address.state}`;
+    });
     }catch{
-        console.log("you are fucked up");
+        alert("unexcepted error");
     }
 }
+
