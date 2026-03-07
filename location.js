@@ -51,8 +51,4 @@ async function temp(lat,lon){
     document.querySelector(".Visibility").innerHTML = `${data.current.visibility} m `;
     document.querySelector(".Pressure").innerHTML = `${data.current.pressure_msl} hPa`;
     document.querySelector(".rain").innerHTML = `${data.current.rain} mm`;
-
-
-    
 }
-
