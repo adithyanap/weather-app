@@ -15,18 +15,12 @@ class Time {
     time() {
         if (this.hour > 12) {
             this.tHours = this.hour - 12;
-        }else if (this.hour === 0) {
-            this.tHours = 12;
-        } else if (this.hour === 11) {
-            this.tHours = 11;
-        } else if (this.hour === 12) {
-            this.tHours = 12;
-        } else {
-            this.tHours = string(hour).padstart(2, "0");
+        }else{
+            this.tHours = this.hour;
         }
         if (this.min < 10) {
             this.tmin = string(min).padstart(2, "0");
-        } else {
+        } else if(this.min >= 10 ) {
             this.tmin = this.min;
         }
         return (`${this.tHours}:${this.tmin}`);
@@ -48,9 +42,7 @@ class Time {
 
 const times = new Time(now);
 
-
+console.log(typeof now.getHours());
 document.querySelector(".date").innerHTML = date();
-console.log(times.time());
-
 document.querySelector(".time").childNodes[0].nodeValue = times.time();
 document.querySelector(".mer").innerHTML = times.mer();
