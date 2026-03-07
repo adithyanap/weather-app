@@ -20,6 +20,7 @@ class Time {
             this.tHours = this.hour-12;
             return(`${this.tHours}:${this.min}`);
         }else{
+            this.tHours = 11;
             if (this.hour === 0 ){
                 this.tHours = 12;
             }
@@ -41,6 +42,7 @@ const times = new Time(now);
 
 
 document.querySelector(".date").innerHTML = date();
+console.log( times.time());
 
 document.querySelector(".time").childNodes[0].nodeValue = times.time();
 document.querySelector(".mer").innerHTML = times.mer();

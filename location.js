@@ -43,7 +43,6 @@ async function temp(lat,lon){
     let url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,dew_point_2m,pressure_msl,wind_speed_80m,visibility,rain`;
     let responce = await fetch(url);
     let data = await responce.json();
-    console.log(data);
     document.querySelector(".temp").innerHTML = `${data.current.temperature_2m} °C`;
     document.querySelector(".big-temp").innerHTML = `${data.current.temperature_2m} °C`;
     document.querySelector(".Humidity").innerHTML = `${data.current.relative_humidity_2m} %`;
