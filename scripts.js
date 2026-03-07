@@ -44,6 +44,3 @@ document.querySelector(".date").innerHTML = date();
 
 document.querySelector(".time").childNodes[0].nodeValue = times.time();
 document.querySelector(".mer").innerHTML = times.mer();
-
-
-
