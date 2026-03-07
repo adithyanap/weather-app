@@ -23,9 +23,12 @@ class Time {
         } else if(this.min >= 10 ) {
             this.tmin = this.min;
         }
+        if(this.hour === 0){
+            this.tHours = 12;
+        }
+
+        
         return (`${this.tHours}:${this.tmin}`);
-
-
     }
     mer() {
         if (this.hour > 12) {

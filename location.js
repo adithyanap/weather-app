@@ -1,4 +1,4 @@
-
+let rain;
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(success, error);
@@ -23,8 +23,22 @@ async function success(position) {
 function error() {
     alert("Location not found");
 }
+function rainyDay(){
+    let image = "rainyMorining.jpg"
+    if(rain > 0){
+        
+        document.querySelector(".hero").style.background = `url("${image}") no-repeat center/cover`;
+        document.querySelector(".weather-info").style.background= "#f0eaea";
+        document.querySelector(".sidebar").style.background= "#f0eaea";
+        document.querySelector(".footer").style.background= "#f0eaea";
+        document.querySelector("body").style.color= "#080808";
+        document.querySelector(".des").innerHTML= "It's a rainy day";
+        document.querySelector(".sImage").src= "rainysun.png";
 
-
+    }
+    
+}
+rainyDay();
 
 async function getAdress(lat,lon) {
     try{
@@ -51,4 +65,5 @@ async function temp(lat,lon){
     document.querySelector(".Visibility").innerHTML = `${data.current.visibility} m `;
     document.querySelector(".Pressure").innerHTML = `${data.current.pressure_msl} hPa`;
     document.querySelector(".rain").innerHTML = `${data.current.rain} mm`;
+    rain = data.current.rain;
 }
