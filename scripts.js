@@ -3,6 +3,7 @@ function date() {
     let day = now.getDay();
     let mon = now.getMonth();
     let year = now.getFullYear();
+    console.log(`${day} , ${mon} , ${year}`);
     return (`${day + 1}/${mon + 1}/${year}`);
 
 }
@@ -46,16 +47,34 @@ class Time {
 function changeNght(){
     const time = new Time(now);
     data = time.returnTime();
-    let image = 'moon.jpg';
     if(data[0] >= 19){
         
-        document.querySelector(".hero").style.background = `url("${image}") no-repeat center/cover`;
+        document.querySelector(".hero").style.background = `url("${'moon.jpg'}") no-repeat center/cover`;
         document.querySelector(".weather-info").style.background= "#080808";
         document.querySelector(".sidebar").style.background= "#080808";
         document.querySelector(".footer").style.background= "#080808";
         document.querySelector("body").style.color= "#c3b5b5";
         document.querySelector(".des").innerHTML= "It's a cloudy night";
         document.querySelector(".sImage").src= "smallMoon.png";
+
+    }
+    else if((data[0] > 15) && data[0] < 19){
+        document.querySelector(".hero").style.background = `url("${'sunset.jpg'}") no-repeat center/cover`;
+        document.querySelector(".weather-info").style.background= "#c3b5b5";
+        document.querySelector(".sidebar").style.background= "#c3b5b5";
+        document.querySelector(".footer").style.background= "#c3b5b5";
+        document.querySelector("body").style.color= "#080808";
+        document.querySelector(".des").innerHTML= "The sun will set soon";
+        document.querySelector(".sImage").src= "sSettingsun.png";
+
+    }else if(data[0] > 4 && data[0] < 7){
+        document.querySelector(".hero").style.background = `url("${'sunrise.jpg'}") no-repeat center/cover`;
+        document.querySelector(".weather-info").style.background= "#c3b5b5";
+        document.querySelector(".sidebar").style.background= "#c3b5b5";
+        document.querySelector(".footer").style.background= "#c3b5b5";
+        document.querySelector("body").style.color= "#080808";
+        document.querySelector(".des").innerHTML= "The sun is about to rise";
+        document.querySelector(".sImage").src= "https://cdn-icons-png.flaticon.com/512/869/869869.png";
 
     }
     
