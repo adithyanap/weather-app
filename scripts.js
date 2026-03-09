@@ -47,28 +47,30 @@ class Time {
 function changeNght(){
     const time = new Time(now);
     data = time.returnTime();
-    if(data[0] >= 19){
+    data[0] = 21;
+    let mrg = [20,21,22,23,24,1,2,3];
+    if(mrg.includes(data[0])){
         
-        document.querySelector(".hero").style.background = `url("${'moon.jpg'}") no-repeat center/cover`;
+        document.querySelector(".hero").style.background = `url("${'image/moon.jpg'}") no-repeat center/cover`;
         document.querySelector(".weather-info").style.background= "#080808";
         document.querySelector(".sidebar").style.background= "#080808";
         document.querySelector(".footer").style.background= "#080808";
         document.querySelector("body").style.color= "#c3b5b5";
         document.querySelector(".des").innerHTML= "It's a cloudy night";
-        document.querySelector(".sImage").src= "smallMoon.png";
+        document.querySelector(".sImage").src= "image/smallMoon.png";
 
     }
-    else if((data[0] > 15) && data[0] < 19){
-        document.querySelector(".hero").style.background = `url("${'sunset.jpg'}") no-repeat center/cover`;
+    else if((data[0] > 16) &&  data[0] <= 19){
+        document.querySelector(".hero").style.background = `url("${'image/sunset.jpg'}") no-repeat center/cover`;
         document.querySelector(".weather-info").style.background= "#c3b5b5";
         document.querySelector(".sidebar").style.background= "#c3b5b5";
         document.querySelector(".footer").style.background= "#c3b5b5";
         document.querySelector("body").style.color= "#080808";
         document.querySelector(".des").innerHTML= "The sun will set soon";
-        document.querySelector(".sImage").src= "sSettingsun.png";
+        document.querySelector(".sImage").src= "image/sSettingsun.png";
 
-    }else if(data[0] > 4 && data[0] < 7){
-        document.querySelector(".hero").style.background = `url("${'sunrise.jpg'}") no-repeat center/cover`;
+    }else if(data[0] >= 4 && data[0] < 7){
+        document.querySelector(".hero").style.background = `url("${'image/sunrise.jpg'}") no-repeat center/cover`;
         document.querySelector(".weather-info").style.background= "#c3b5b5";
         document.querySelector(".sidebar").style.background= "#c3b5b5";
         document.querySelector(".footer").style.background= "#c3b5b5";
