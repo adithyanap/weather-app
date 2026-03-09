@@ -1,10 +1,10 @@
 let now = new Date();
 function date() {
-    let day = now.getDay();
-    let mon = now.getMonth();
+    let day = now.getDate();
+    let mon = now.getMonth() + 1;
     let year = now.getFullYear();
     console.log(`${day} , ${mon} , ${year}`);
-    return (`${day + 1}/${mon + 1}/${year}`);
+    return (`${day}/${mon}/${year}`);
 
 }
 
