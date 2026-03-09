@@ -1,9 +1,10 @@
 let now = new Date();
 function date() {
-    let day = now.getDay();
-    let mon = now.getMonth();
+    let day = now.getDate();
+    let mon = now.getMonth() + 1;
     let year = now.getFullYear();
-    return (`${day + 1}/${mon + 1}/${year}`);
+    console.log(`${day} , ${mon} , ${year}`);
+    return (`${day}/${mon}/${year}`);
 
 }
 
@@ -23,9 +24,12 @@ class Time {
         } else if(this.min >= 10 ) {
             this.tmin = this.min;
         }
+        if(this.hour === 0){
+            this.tHours = 12;
+        }
+
+        
         return (`${this.tHours}:${this.tmin}`);
-
-
     }
     mer() {
         if (this.hour > 12) {
@@ -43,16 +47,36 @@ class Time {
 function changeNght(){
     const time = new Time(now);
     data = time.returnTime();
-    let image = 'moon.jpg';
-    if(data[0] >= 19){
+    data[0] = 21;
+    let mrg = [20,21,22,23,24,1,2,3];
+    if(mrg.includes(data[0])){
         
-        document.querySelector(".hero").style.background = `url("${image}") no-repeat center/cover`;
+        document.querySelector(".hero").style.background = `url("${'image/moon.jpg'}") no-repeat center/cover`;
         document.querySelector(".weather-info").style.background= "#080808";
         document.querySelector(".sidebar").style.background= "#080808";
         document.querySelector(".footer").style.background= "#080808";
         document.querySelector("body").style.color= "#c3b5b5";
         document.querySelector(".des").innerHTML= "It's a cloudy night";
-        document.querySelector(".sImage").src= "smallMoon.png";
+        document.querySelector(".sImage").src= "image/smallMoon.png";
+
+    }
+    else if((data[0] > 16) &&  data[0] <= 19){
+        document.querySelector(".hero").style.background = `url("${'image/sunset.jpg'}") no-repeat center/cover`;
+        document.querySelector(".weather-info").style.background= "#c3b5b5";
+        document.querySelector(".sidebar").style.background= "#c3b5b5";
+        document.querySelector(".footer").style.background= "#c3b5b5";
+        document.querySelector("body").style.color= "#080808";
+        document.querySelector(".des").innerHTML= "The sun will set soon";
+        document.querySelector(".sImage").src= "image/sSettingsun.png";
+
+    }else if(data[0] >= 4 && data[0] < 7){
+        document.querySelector(".hero").style.background = `url("${'image/sunrise.jpg'}") no-repeat center/cover`;
+        document.querySelector(".weather-info").style.background= "#c3b5b5";
+        document.querySelector(".sidebar").style.background= "#c3b5b5";
+        document.querySelector(".footer").style.background= "#c3b5b5";
+        document.querySelector("body").style.color= "#080808";
+        document.querySelector(".des").innerHTML= "The sun is about to rise";
+        document.querySelector(".sImage").src= "https://cdn-icons-png.flaticon.com/512/869/869869.png";
 
     }
     
