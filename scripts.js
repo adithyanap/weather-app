@@ -4,7 +4,6 @@ function date() {
     let day = now.getDate();
     let mon = now.getMonth() + 1;
     let year = now.getFullYear();
-    console.log(`${day} , ${mon} , ${year}`);
     return (`${day}/${mon}/${year}`);
 
 }
@@ -86,3 +85,7 @@ const times = new Time(now);
 document.querySelector(".date").innerHTML = date();
 document.querySelector(".time").childNodes[0].nodeValue = times.time();
 document.querySelector(".mer").innerHTML = times.mer();
+
+
+
+
