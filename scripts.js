@@ -1,3 +1,4 @@
+
 let now = new Date();
 function date() {
     let day = now.getDate();
@@ -7,7 +8,6 @@ function date() {
     return (`${day}/${mon}/${year}`);
 
 }
-
 class Time {
     constructor(now) {
         this.hour = now.getHours();
@@ -20,15 +20,13 @@ class Time {
             this.tHours = this.hour;
         }
         if (this.min < 10) {
-            this.tmin = string(min).padstart(2, "0");
-        } else if(this.min >= 10 ) {
+            this.tmin = `0${this.min}`;
+        } else {
             this.tmin = this.min;
         }
         if(this.hour === 0){
             this.tHours = 12;
         }
-
-        
         return (`${this.tHours}:${this.tmin}`);
     }
     mer() {
@@ -47,9 +45,8 @@ class Time {
 function changeNght(){
     const time = new Time(now);
     data = time.returnTime();
-    data[0] = 21;
-    let mrg = [20,21,22,23,24,1,2,3];
-    if(mrg.includes(data[0])){
+    let night = [20,21,22,23,24,1,2,3];
+    if(night.includes(data[0])){
         
         document.querySelector(".hero").style.background = `url("${'image/moon.jpg'}") no-repeat center/cover`;
         document.querySelector(".weather-info").style.background= "#080808";
@@ -68,7 +65,6 @@ function changeNght(){
         document.querySelector("body").style.color= "#080808";
         document.querySelector(".des").innerHTML= "The sun will set soon";
         document.querySelector(".sImage").src= "image/sSettingsun.png";
-
     }else if(data[0] >= 4 && data[0] < 7){
         document.querySelector(".hero").style.background = `url("${'image/sunrise.jpg'}") no-repeat center/cover`;
         document.querySelector(".weather-info").style.background= "#c3b5b5";
@@ -81,6 +77,7 @@ function changeNght(){
     }
     
 }
+
 changeNght();
 
 const times = new Time(now);
