@@ -1,4 +1,6 @@
 let rain;
+let now = new Date();
+let hour = now.getHours();
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(success, error);
@@ -53,8 +55,9 @@ function error() {
     alert("Location not found");
 }
 function rainyDay() {
-    let image = "rainyMorining.jpg"
-    if (rain > 0) {
+    let image = "image/rainyMorining.jpg"
+    rain = 1;
+    if (rain > 0 && hour < 18 ) {
 
         document.querySelector(".hero").style.background = `url("${image}") no-repeat center/cover`;
         document.querySelector(".weather-info").style.background = "#f0eaea";
@@ -62,7 +65,16 @@ function rainyDay() {
         document.querySelector(".footer").style.background = "#f0eaea";
         document.querySelector("body").style.color = "#080808";
         document.querySelector(".des").innerHTML = "It's a rainy day";
-        document.querySelector(".sImage").src = "rainysun.png";
+        document.querySelector(".sImage").src = "image/rainysun.png";
+
+    }else if (rain > 0 && hour > 18){
+        document.querySelector(".hero").style.background = `url("${image}") no-repeat center/cover`;
+        document.querySelector(".weather-info").style.background = "#080808";
+        document.querySelector(".sidebar").style.background = "#080808";
+        document.querySelector(".footer").style.background = "#080808";
+        document.querySelector("body").style.color = "#f0eaea";
+        document.querySelector(".des").innerHTML = "It's a rainy night";
+        document.querySelector(".sImage").src = "image/smallMoon.png";
 
     }
 
