@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
-<body onload = "getLocation()">
+<body onload="getLocation()">
 
   <div class="container">
 
@@ -18,102 +18,82 @@
 
       <!-- Hero Section -->
       <section class="hero">
-        <div class = "date"></div>
+
+        <div class="date"></div>
 
         <input type="text" placeholder="Search city" class="search-box">
 
         <div class="hero-top">
           <h2 class="temp">29°C</h2>
-          <h1 class="location">kerala, India</h1>
+          <h1 class="location">Kerala, India</h1>
         </div>
 
         <div class="time">
-          7:33<span class = "mer">am</span>
+          7:33<span class="mer">am</span>
           <small>IST</small>
         </div>
 
       </section>
 
+      <!-- Weather Info -->
+      <section class="weather-info">
 
-      <!-- Weather + Sidebar Section -->
-      <section class="content-area">
+        <h2>Weather Today</h2>
 
-        <!-- Sidebar -->
-        <aside class="sidebar">
+        <div class="weather-details">
 
-          
+          <h3 class="loc">Kerala, India</h3>
 
-          <h3 class="sidebar-title">Check out</h3>
-
-          <div class="card">
-            <img src="https://images.unsplash.com/photo-1522383225653-ed111181a951" alt="Cherry blossom">
-            <p>Blossoms in Bloom: Japan's Most Beautiful Season Begins</p>
+          <div class="weather-status">
+            <img class="sImage" src="https://cdn-icons-png.flaticon.com/512/869/869869.png" alt="Sun icon">
+            <p class="des">It's a sunny day</p>
           </div>
 
-        </aside>
+          <p class="feels">Feels like</p>
 
+          <h1 class="big-temp">29°C</h1>
 
-        <!-- Weather Info -->
-        <section class="weather-info">
+          <div class="weather-metrics">
 
-          <h2>Weather Today</h2>
+            <!-- Left Column -->
+            <div class="metrics-column">
+              <div class="info-row">
+                <span>Humidity</span>
+                <span class="Humidity">88%</span>
+              </div>
 
-          <div class="weather-details">
+              <div class="info-row">
+                <span>Rain</span>
+                <span class="rain"></span>
+              </div>
 
-            <h3 class = "loc">Kerala, India</h3>
-
-            <div class="weather-status">
-              <img class = "sImage" src="https://cdn-icons-png.flaticon.com/512/869/869869.png" alt="Sun icon">
-              <p class = "des">It's a sunny day</p>
+              <div class="info-row">
+                <span>Pressure</span>
+                <span class="Pressure">29.89 in</span>
+              </div>
             </div>
 
-            <p class="feels">Feels like</p>
-
-            <h1 class="big-temp">29°C</h1>
-
-            <div class="weather-metrics">
-
-              <!-- Left Column -->
-              <div class="metrics-column">
-                <div class="info-row">
-                  <span>Humidity</span>
-                  <span class = "Humidity">88%</span>
-                </div>
-
-                <div class="info-row">
-                  <span>Rain</span>
-                  <span class = "rain"></span>
-                </div>
-
-                <div class="info-row">
-                  <span>Pressure</span>
-                  <span  class = "Pressure">29.89 in</span>
-                </div>
+            <!-- Right Column -->
+            <div class="metrics-column">
+              <div class="info-row">
+                <span>Wind Speed</span>
+                <span class="windSpeed">4 mph</span>
               </div>
 
-              <!-- Right Column -->
-              <div class="metrics-column">
-                <div class="info-row">
-                  <span>Wind Speed</span>
-                  <span class = "windSpeed">4 mph</span>
-                </div>
-
-                <div class="info-row">
-                  <span >Visibility</span>
-                  <span class = "Visibility">0</span>
-                </div>
-
-                <div class="info-row">
-                  <span>Dew Point</span>
-                  <span  class = "DewPoint">0</span>
-                </div>
+              <div class="info-row">
+                <span>Visibility</span>
+                <span class="Visibility">0</span>
               </div>
 
+              <div class="info-row">
+                <span>Dew Point</span>
+                <span class="DewPoint">0</span>
+              </div>
             </div>
 
           </div>
 
-        </section>
+        </div>
 
       </section>
 
@@ -125,8 +105,8 @@
     weather-app/adithyanap
   </footer>
 
-</body>
-<script src = "scripts.js" ></script>
+  <script src="scripts.js"></script>
 
+</body>
 
 </html>
