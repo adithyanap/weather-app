@@ -1,5 +1,7 @@
-
 let now = new Date();
+let rain;
+let nowT = new Date();
+let hour = nowT.getHours();
 function date() {
     let day = now.getDate();
     let mon = now.getMonth() + 1;
@@ -15,7 +17,7 @@ class Time {
     time() {
         if (this.hour > 12) {
             this.tHours = this.hour - 12;
-        }else{
+        } else {
             this.tHours = this.hour;
         }
         if (this.min < 10) {
@@ -23,7 +25,7 @@ class Time {
         } else {
             this.tmin = this.min;
         }
-        if(this.hour === 0){
+        if (this.hour === 0) {
             this.tHours = 12;
         }
         return (`${this.tHours}:${this.tmin}`);
@@ -36,59 +38,43 @@ class Time {
         }
         return (this.merd);
     }
-    returnTime(){
-        return [this.hour,this.min];
+    returnTime() {
+        return [this.hour, this.min];
     }
 
 }
-function changeNght(){
+function changeNght() {
     const time = new Time(now);
     data = time.returnTime();
-    let night = [20,21,22,23,24,1,2,3];
-    if(night.includes(data[0])){
-        
+    let night = [20, 21, 22, 23, 24, 1, 2, 3];
+    if (night.includes(data[0])) {
+
         document.querySelector(".hero").style.background = `url("${'image/moon.jpg'}") no-repeat center/cover`;
-        document.querySelector(".weather-info").style.background= "#080808";
-        document.querySelector(".footer").style.background= "#080808";
-        document.querySelector("body").style.color= "#c3b5b5";
-        document.querySelector(".des").innerHTML= "It's a cloudy night";
-        document.querySelector(".sImage").src= "image/smallMoon.png";
+        document.querySelector(".weather-info").style.background = "#080808";
+        document.querySelector(".footer").style.background = "#080808";
+        document.querySelector("body").style.color = "#c3b5b5";
+        document.querySelector(".des").innerHTML = "It's a cloudy night";
+        document.querySelector(".sImage").src = "image/smallMoon.png";
 
     }
-    else if((data[0] > 16) &&  data[0] <= 19){
+    else if ((data[0] > 16) && data[0] <= 19) {
         document.querySelector(".hero").style.background = `url("${'image/sunset.jpg'}") no-repeat center/cover`;
-        document.querySelector(".weather-info").style.background= "#c3b5b5";
-        document.querySelector(".footer").style.background= "#c3b5b5";
-        document.querySelector("body").style.color= "#080808";
-        document.querySelector(".des").innerHTML= "The sun will set soon";
-        document.querySelector(".sImage").src= "image/sSettingsun.png";
-    }else if(data[0] >= 4 && data[0] < 7){
+        document.querySelector(".weather-info").style.background = "#c3b5b5";
+        document.querySelector(".footer").style.background = "#c3b5b5";
+        document.querySelector("body").style.color = "#080808";
+        document.querySelector(".des").innerHTML = "The sun will set soon";
+        document.querySelector(".sImage").src = "image/sSettingsun.png";
+    } else if (data[0] >= 4 && data[0] < 7) {
         document.querySelector(".hero").style.background = `url("${'image/sunrise.jpg'}") no-repeat center/cover`;
-        document.querySelector(".weather-info").style.background= "#c3b5b5";
-        document.querySelector(".footer").style.background= "#c3b5b5";
-        document.querySelector("body").style.color= "#080808";
-        document.querySelector(".des").innerHTML= "The sun is about to rise";
-        document.querySelector(".sImage").src= "https://cdn-icons-png.flaticon.com/512/869/869869.png";
+        document.querySelector(".weather-info").style.background = "#c3b5b5";
+        document.querySelector(".footer").style.background = "#c3b5b5";
+        document.querySelector("body").style.color = "#080808";
+        document.querySelector(".des").innerHTML = "The sun is about to rise";
+        document.querySelector(".sImage").src = "https://cdn-icons-png.flaticon.com/512/869/869869.png";
 
     }
-    
+
 }
-
-changeNght();
-
-const times = new Time(now);
-
-
-document.querySelector(".date").innerHTML = date();
-document.querySelector(".time").childNodes[0].nodeValue = times.time();
-document.querySelector(".mer").innerHTML = times.mer();
-
-
-// location .js
-
-let rain;
-let nowT = new Date();
-let hour = nowT.getHours();
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(success, error);
@@ -96,7 +82,6 @@ function getLocation() {
         alert("Browser error");
     }
 }
-
 async function success(position) {
     const latitude = await position.coords.latitude;
     const longitude = await position.coords.longitude;
@@ -104,7 +89,6 @@ async function success(position) {
     temp(latitude, longitude);
 
 }
-
 function getSWeather() {
     try {
         document.addEventListener("keypress", async (e) => {
@@ -117,7 +101,7 @@ function getSWeather() {
             try {
                 let location = document.querySelector(".search-box").value;
                 document.querySelector(".search-box").value = "";
-                
+
                 let url = `https://nominatim.openstreetmap.org/search?&q=${location}&format=json`;
                 let responce = await fetch(url);
                 let data = await responce.json();
@@ -126,8 +110,8 @@ function getSWeather() {
                 if (lon === undefined) {
                     alert("location not found");
                 } else {
-                    getAdress(lat, lon,location);
-                    temp(lat,lon);
+                    getAdress(lat, lon, location);
+                    temp(lat, lon);
                 }
             } catch {
                 alert("location not found");
@@ -137,33 +121,29 @@ function getSWeather() {
         console.log("unexcepted error");
     }
 }
-
-getSWeather();
-
 function error() {
     alert("Location not found");
 }
-
-
-async function getAdress(lat, lon,def) {
+async function getAdress(lat, lon, def) {
     try {
         let url = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`;
         let responce = await fetch(url);
         let data = await responce.json();
         [".location", ".loc"].forEach(sec => {
             if (data.address.town != undefined) {
-                document.querySelector(sec).innerHTML = `${data.address.town}, ${data.address.state_district}, ${data.address.state}`;
-            } else {
-                document.querySelector(sec).innerHTML = `${data.address.state_district}, ${data.address.state}`;
-            }if (data.address.state_district === undefined) {
-                document.querySelector(sec).innerHTML = `${data.address.state} ,${def}`;
-            } 
+                document.querySelector(sec).innerHTML = `${data.address.town.toUpperCase()}, ${data.address.state_district.toUpperCase()}, ${data.address.state.toUpperCase()}`;
+            } if(data.address.state === undefined) {
+                document.querySelector(sec).innerHTML = `${data.address.state_district.toUpperCase()}, ${data.address.state.toUpperCase()}`;
+            } if (data.address.state_district === undefined) {
+                document.querySelector(sec).innerHTML = `${data.address.state.toUpperCase()} ,${def}`;
+            }if (data.address.state === undefined) {
+                document.querySelector(sec).innerHTML = `${def.toUpperCase()}`;
+            }
         });
     } catch {
         alert("unexcepted error");
     }
 }
-
 async function temp(lat, lon) {
     let url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,dew_point_2m,pressure_msl,wind_speed_80m,visibility,rain`;
     let responce = await fetch(url);
@@ -178,10 +158,9 @@ async function temp(lat, lon) {
     document.querySelector(".rain").innerHTML = `${data.current.rain} mm`;
     rain = data.current.rain;
 }
-
 function rainyDay() {
     let image = "image/rainyMorining.jpg"
-    if (rain > 0 && hour < 18 ) {
+    if (rain > 0 && hour < 18) {
 
         document.querySelector(".hero").style.background = `url("${image}") no-repeat center/cover`;
         document.querySelector(".weather-info").style.background = "#f0eaea";
@@ -190,7 +169,7 @@ function rainyDay() {
         document.querySelector(".des").innerHTML = "It's a rainy day";
         document.querySelector(".sImage").src = "image/rainysun.png";
 
-    }else if (rain > 0 && hour > 18){
+    } else if (rain > 0 && hour > 18) {
         document.querySelector(".hero").style.background = `url("image/rainNight.jpg") no-repeat center/cover`;
         document.querySelector(".weather-info").style.background = "#080808";
         document.querySelector(".footer").style.background = "#080808";
@@ -201,4 +180,15 @@ function rainyDay() {
     }
 
 }
+
+
+getSWeather();
+changeNght();
 rainyDay();
+
+const times = new Time(now);
+
+
+document.querySelector(".date").innerHTML = date();
+document.querySelector(".time").childNodes[0].nodeValue = times.time();
+document.querySelector(".mer").innerHTML = times.mer();
