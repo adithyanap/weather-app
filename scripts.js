@@ -110,8 +110,12 @@ function getSWeather() {
                 if (lon === undefined) {
                     alert("location not found");
                 } else {
-                    getAdress(lat, lon, location);
+                    if(data.name === ""){
+                        alert("not a specific location");
+                        return 0;
+                    }
                     temp(lat, lon);
+                    getAdress(lat, lon, location);
                 }
             } catch {
                 alert("location not found");
@@ -129,10 +133,24 @@ async function getAdress(lat, lon, def) {
         let responce = await fetch(url);
         let data = await responce.json();
         console.log(data);
-        console.log(`${data.display_name}`);
-        document.querySelector(".loc").innerHTML = data.display_name;
-        document.querySelector(".location").innerHTML = data.display_name;
-
+        if(data.name === ""){
+            alert("not a specific location");
+            return 0;
+        }
+        if(data.address.state_district === undefined){
+        document.querySelector(".loc").innerHTML =`${def.toUpperCase()}` ;
+        document.querySelector(".location").innerHTML =`${def.toUpperCase()}` ;
+        }
+        else if(data.address.city === undefined){
+        document.querySelector(".loc").innerHTML =`${data.address.state_district.toUpperCase()}, ${data.name.toUpperCase()}` ;
+        document.querySelector(".location").innerHTML =`${data.address.state_district.toUpperCase()}, ${data.name.toUpperCase()}` ;
+        console.log(`${data.address.state_district}`);
+        }else{
+        document.querySelector(".loc").innerHTML =`${data.address.city.toUpperCase()}, ${data.name.toUpperCase()}` ;
+        document.querySelector(".location").innerHTML =`${data.address.city.toUpperCase()}, ${data.name.toUpperCase()}` ;
+        console.log(`${data.address.city}`);
+        }
+        
 }
 async function temp(lat, lon) {
     let url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,dew_point_2m,pressure_msl,wind_speed_80m,visibility,rain`;
