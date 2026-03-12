@@ -85,7 +85,7 @@ function getLocation() {
 async function success(position) {
     const latitude = await position.coords.latitude;
     const longitude = await position.coords.longitude;
-    getAdress(latitude, longitude);
+    getAdress(latitude, longitude,"");
     temp(latitude, longitude);
 
 }
@@ -125,24 +125,14 @@ function error() {
     alert("Location not found");
 }
 async function getAdress(lat, lon, def) {
-    try {
         let url = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`;
         let responce = await fetch(url);
         let data = await responce.json();
-        [".location", ".loc"].forEach(sec => {
-            if (data.address.town != undefined) {
-                document.querySelector(sec).innerHTML = `${data.address.town.toUpperCase()}, ${data.address.state_district.toUpperCase()}, ${data.address.state.toUpperCase()}`;
-            } if(data.address.state === undefined) {
-                document.querySelector(sec).innerHTML = `${data.address.state_district.toUpperCase()}, ${data.address.state.toUpperCase()}`;
-            } if (data.address.state_district === undefined) {
-                document.querySelector(sec).innerHTML = `${data.address.state.toUpperCase()} ,${def}`;
-            }if (data.address.state === undefined) {
-                document.querySelector(sec).innerHTML = `${def.toUpperCase()}`;
-            }
-        });
-    } catch {
-        alert("unexcepted error");
-    }
+        console.log(data);
+        console.log(`${data.display_name}`);
+        document.querySelector(".loc").innerHTML = data.display_name;
+        document.querySelector(".location").innerHTML = data.display_name;
+
 }
 async function temp(lat, lon) {
     let url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,dew_point_2m,pressure_msl,wind_speed_80m,visibility,rain`;
