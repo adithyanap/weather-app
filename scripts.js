@@ -86,72 +86,59 @@ function getLocation() {
 async function success(position) {
     const latitude = await position.coords.latitude;
     const longitude = await position.coords.longitude;
-    getAdress(latitude, longitude,"");
+    getAdress(latitude, longitude, "");
     temp(latitude, longitude);
 
 }
 function getSWeather() {
-    try {
         document.addEventListener("keypress", async (e) => {
             if (e.key === "Enter") {
                 enter();
 
             }
-        });
-        async function enter() {
-            try {
-                let location = document.querySelector(".search-box").value;
-                document.querySelector(".search-box").value = "";
+        });}
+async function enter() {
+    try{
+    let location = document.querySelector(".search-box").value;
+    document.querySelector(".search-box").value = "";
 
-                let url = `https://nominatim.openstreetmap.org/search?&q=${location}&format=json`;
-                let responce = await fetch(url);
-                let data = await responce.json();
-                let lon = data[0]['lon'];
-                let lat = data[0]['lat'];
-                if (lon === undefined) {
-                    alert("location not found");
-                } else {
-                    if(data.name === ""){
-                        alert("not a specific location");
-                        return 0;
-                    }
-                    temp(lat, lon);
-                    getAdress(lat, lon, location);
-                }
-            } catch {
-                alert("location not found");
-            }
-        }
-    } catch {
-        console.log("unexcepted error");
+    let url = `https://nominatim.openstreetmap.org/search?&q=${location}&format=json`;
+    let responce = await fetch(url);
+    let data = await responce.json();
+    let lon = data[0]['lon'];
+    let lat = data[0]['lat'];
+    console.log(data);
+    if (lon === undefined) {
+        alert("location not found");
+    } else {
+        getAdress(lat, lon, location);
+        temp(lat, lon);
     }
+}catch{
+    alert("Not a valid location");
+}
 }
 function error() {
     alert("Location not found");
 }
 async function getAdress(lat, lon, def) {
-        let url = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`;
-        let responce = await fetch(url);
-        let data = await responce.json();
-        console.log(data);
-        if(data.name === ""){
-            alert("not a specific location");
-            return 0;
-        }
-        if(data.address.state_district === undefined){
-        document.querySelector(".loc").innerHTML =`${def.toUpperCase()}` ;
-        document.querySelector(".location").innerHTML =`${def.toUpperCase()}` ;
-        }
-        else if(data.address.city === undefined){
-        document.querySelector(".loc").innerHTML =`${data.address.state_district.toUpperCase()}, ${data.name.toUpperCase()}` ;
-        document.querySelector(".location").innerHTML =`${data.address.state_district.toUpperCase()}, ${data.name.toUpperCase()}` ;
+    let url = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`;
+    let responce = await fetch(url);
+    let data = await responce.json();
+    if (data.address.state_district === undefined) {
+        document.querySelector(".loc").innerHTML = `${def.toUpperCase()}`;
+        document.querySelector(".location").innerHTML = `${def.toUpperCase()}`;
+    }
+    else if (data.address.city === undefined) {
+        document.querySelector(".loc").innerHTML = `${data.address.state_district.toUpperCase()}, ${data.name.toUpperCase()}`;
+        document.querySelector(".location").innerHTML = `${data.address.state_district.toUpperCase()}, ${data.name.toUpperCase()}`;
         console.log(`${data.address.state_district}`);
-        }else{
-        document.querySelector(".loc").innerHTML =`${data.address.city.toUpperCase()}, ${data.name.toUpperCase()}` ;
-        document.querySelector(".location").innerHTML =`${data.address.city.toUpperCase()}, ${data.name.toUpperCase()}` ;
+    } else {
+        document.querySelector(".loc").innerHTML = `${data.address.city.toUpperCase()}, ${data.name.toUpperCase()}`;
+        document.querySelector(".location").innerHTML = `${data.address.city.toUpperCase()}, ${data.name.toUpperCase()}`;
         console.log(`${data.address.city}`);
-        }
-        
+    }
+
 }
 async function temp(lat, lon) {
     let url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,dew_point_2m,pressure_msl,wind_speed_80m,visibility,rain`;
@@ -189,7 +176,6 @@ function rainyDay() {
     }
 
 }
-
 
 getSWeather();
 changeNght();
