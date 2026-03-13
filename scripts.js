@@ -9,6 +9,7 @@ function date() {
     return (`${day}/${mon}/${year}`);
 
 }
+
 class Time {
     constructor(now) {
         this.hour = now.getHours();
